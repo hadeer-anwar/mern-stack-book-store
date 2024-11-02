@@ -3,6 +3,7 @@ import {PORT, mongoDBURL } from "./config.js"
 import mongoose from "mongoose"
 import cors from 'cors'
 import bookRouter from "./routes/book.routes.js";
+import errorHandler from "./middlewares/errorHandler.js";
 
 const app=express();
 
@@ -26,5 +27,7 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/api/v1/books',bookRouter)
+
+app.use(errorHandler)
 
 
